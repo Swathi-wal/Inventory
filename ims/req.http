@@ -1,0 +1,152 @@
+###request for usercreation or registration
+POST http://localhost:4000/register-user
+Content-Type: application/json
+
+{  
+    "role":"seller",
+    "firstName":"lakshmi",
+    "lastName":"gokavarapu",
+    "email":"lakshmi.g@westagilelabs.com",
+    "password":"lakshmi",
+    "mobile":6305080623,
+    "address":{
+        "pincode":533220,
+        "street":"ranga",
+        "city":"kesanakurru",
+        "district":"eastgodavari",
+        "country":"india"
+    }
+}
+
+###request for user login
+POST http://localhost:4000/user/login 
+Content-Type: application/json
+
+{
+    "email":"lucky.k@westagilelabs.in",
+    "password":"lucky"
+}
+
+###request to get specific user with address
+GET http://localhost:4000/user/user-address/userId/5
+
+###request for product creation by seller
+POST http://localhost:4000/seller/create-product 
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VsbGVyIiwiZW1haWwiOiJsdWNreS5rQHdlc3RhZ2lsZWxhYnMuaW4iLCJpZCI6MSwiaWF0IjoxNjg3MjQ0OTUwLCJleHAiOjE2ODc3NjMzNTB9.Hjero4cdcKUAsQ7LxBdlmOT4DNs2FpJqFpXhnAjSFFY
+
+{
+    "productName":"pouches",
+    "price":200,
+    "perPackQuantity":1,
+    "quantity":1,
+    "description":"desc",
+    "createdBy":2
+}
+
+###request for updating the specific product by seller
+PUT http://localhost:4000/seller/update-product/productId/114
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VsbGVyIiwiZW1haWwiOiJsdWNreS5rQHdlc3RhZ2lsZWxhYnMuaW4iLCJpZCI6MSwiaWF0IjoxNjg3NTE1Mjc5LCJleHAiOjE2ODgwMzM2Nzl9.FTC5tUoDGz0vMenpHMQfL2OMSY-HYr8XX3HsNjY22h4
+
+{
+    "createdBy": 1,
+    "description": "desc",
+    //"id": 114,
+    "perPackQuantity": 1,
+    "price": 350,
+    "productName": "chargers",
+    "quantity": 1
+}
+
+###Seller can get their products
+GET http://localhost:4000/seller/getproducts/sellerId/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VsbGVyIiwiZW1haWwiOiJwcmFzYW5uYS5nQHdlc3RhZ2lsZWxhYnMuaW4iLCJpZCI6MiwiaWF0IjoxNjg2MjIxMTM1LCJleHAiOjE2ODY3Mzk1MzV9.cpYZtXnnQoMMqH1op7o8p0leHyREdeMuz1z0yja99Sw
+
+###seller can get their products based on id
+GET http://localhost:4000/seller/get-products-by-id/sellerId/2/productId/107 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VsbGVyIiwiZW1haWwiOiJwcmFzYW5uYS5nQHdlc3RhZ2lsZWxhYnMuaW4iLCJpZCI6MiwiaWF0IjoxNjg2MjIxMTM1LCJleHAiOjE2ODY3Mzk1MzV9.cpYZtXnnQoMMqH1op7o8p0leHyREdeMuz1z0yja99Sw
+
+
+###request for deleting the product 
+DELETE http://localhost:4000/seller/delete-product-by-id/productId/111 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VsbGVyIiwiZW1haWwiOiJsdWNreS5rQHdlc3RhZ2lsZWxhYnMuaW4iLCJpZCI6MSwiaWF0IjoxNjg2ODE1ODA5LCJleHAiOjE2ODczMzQyMDl9.9hJO_KjDHG9S1zbGTPayKTy8TdkNrJsrXqnfAiiyC_o
+
+###Customer can create order
+POST http://localhost:4000/customer/create-order 
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiY3VzdG9tZXIiLCJlbWFpbCI6ImhhcmkueUB3ZXN0YWdpbGVsYWJzLmluIiwiaWQiOjMsImlhdCI6MTY4NjU0Njk3MSwiZXhwIjoxNjg3MDY1MzcxfQ.jWuViig4MoAXEMQveWNi_-4vx2ZYTk-4sbZ2rVUNc6I
+
+{
+    "id":503,
+    "productId":106,
+    "quantity":1,
+    "unitPrice":2000,
+    "totalPrice":0,
+    "userId":3
+}
+
+###customer can create the details of his order
+POST http://localhost:4000/customer/order-details 
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiY3VzdG9tZXIiLCJlbWFpbCI6Im1hbmlrYW50YS5nQHdlc3RhZ2lsZWxhYnMuY29tIiwiaWQiOjgsImlhdCI6MTY4NjYzNjI0MywiZXhwIjoxNjg3MTU0NjQzfQ.HvS_9KFD56aEtmqyP3mExhvL1BS71enMfqLZQRpgX28
+
+{
+   "totalAmount":0,
+   "userId":17,
+   "paymentId":null,
+   "deliveryFee":0,
+   "deliveryDate":"2023-06-14",
+   "deliveryAddressId":17,
+   "tax":0,
+   "products":[{
+    "productId":105,
+    "quantity":6,
+    "unitPrice":5,
+    "totalPrice":0
+   },{
+    "productId":106,
+    "quantity":1,
+    "unitPrice":5,
+    "totalPrice":0
+   }]
+}
+
+###Request to create payment by customer
+POST http://localhost:4000/customer/create-payment/orderId/5 
+Content-Type: application/json 
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiY3VzdG9tZXIiLCJlbWFpbCI6ImhhcmkueUB3ZXN0YWdpbGVsYWJzLmluIiwiaWQiOjMsImlhdCI6MTY4NjU0Njk3MSwiZXhwIjoxNjg3MDY1MzcxfQ.jWuViig4MoAXEMQveWNi_-4vx2ZYTk-4sbZ2rVUNc6I
+
+{
+    "paymentType":"COD",
+    "status":"completed"
+}
+
+###Customer can get all products
+GET http://localhost:4000/customer/getproducts  
+
+
+###Customer can get specific product
+GET http://localhost:4000/customer/get-specific-product/productId/100 
+
+###customer can get order details
+GET http://localhost:4000/customer/get-order-details/orderId/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiY3VzdG9tZXIiLCJlbWFpbCI6ImFudWRlZXB0aGkua0B3ZXN0YWdpbGVsYWJzLmNvbSIsImlhdCI6MTY4NTk0NDEwNiwiZXhwIjoxNjg2NDYyNTA2fQ.QE-jFtEXqjDSTgXAwrUob18mFGYXOtnx4Dim7h4W3b4
+
+###
+GET http://localhost:4000/customer/get-order-details/userId/3 
+
+###Admin can get total statistics
+GET http://localhost:4000/admin/total-statistics  
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6InRlamEubkB3ZXN0YWdpbGVsYWJzLmNvbSIsImlkIjoxOCwiaWF0IjoxNjg3MTA3OTIyLCJleHAiOjE2ODc2MjYzMjJ9.no6nRlVbSKHv-w-HCO50nciwHLqqRSM0lSfpPpuIY-E
+
+
+###Admin can get all suppliers details
+GET http://localhost:4000/admin/supplier-details 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6InNlZXRoYS5uQHdlc3RhZ2lsZWxhYnMuY29tIiwiaWQiOjYsImlhdCI6MTY4NjU0NTIyMCwiZXhwIjoxNjg3MDYzNjIwfQ.8RRGlfZEnIvP1QiblwNe8z199W3pGz9Kq9A1Rm14MMg
+###Admin can get all seller details
+GET http://localhost:4000/admin/seller-details 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6InNlZXRoYS5uQHdlc3RhZ2lsZWxhYnMuY29tIiwiaWQiOjYsImlhdCI6MTY4NjU0NTIyMCwiZXhwIjoxNjg3MDYzNjIwfQ.8RRGlfZEnIvP1QiblwNe8z199W3pGz9Kq9A1Rm14MMg
+###Admin can get all customer details
+GET http://localhost:4000/admin/customer-details 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJlbWFpbCI6InNlZXRoYS5uQHdlc3RhZ2lsZWxhYnMuY29tIiwiaWQiOjYsImlhdCI6MTY4NjU0NTIyMCwiZXhwIjoxNjg3MDYzNjIwfQ.8RRGlfZEnIvP1QiblwNe8z199W3pGz9Kq9A1Rm14MMg
